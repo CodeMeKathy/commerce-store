@@ -1,6 +1,5 @@
-import React from './node_modules/react'
-import Homepage from '../components/Homepage'
-
+import React from 'react'
+import Homepage from './containers/Homepage'
 
 function App() {
   return (
@@ -8,6 +7,6 @@ function App() {
       <Homepage />
     </div>
   )
-}
+} 
 
 export default App
