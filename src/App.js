@@ -2,12 +2,13 @@ import React from 'react'
 import { Switch, Route } from 'react-router-dom'
  
 import Homepage from './containers/Homepage'
+import HatsPage from './containers/HatsPage'
 
-const HatsPage = () => (
-  <div>
-    <h1>Hats Page</h1>
-  </div>
-)
+// const HatsPage = () => (
+//   <div>
+//     <h1>Hats Page</h1>
+//   </div>
+// )
 
 function App() {
   return (
