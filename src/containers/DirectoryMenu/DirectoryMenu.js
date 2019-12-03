@@ -1,9 +1,8 @@
 import React from 'react'
 
+import MenuItem from '../../components/MenuItem/MenuItem'
 
-import MenuItem from '../components/MenuItem'
-
-import '../scss/DirectoryMenu.styles.scss'
+import '../DirectoryMenu/DirectoryMenu.styles.scss'
 
 class DirectoryMenu extends React.Component {
   constructor() {
@@ -62,8 +61,7 @@ class DirectoryMenu extends React.Component {
         ))} */}
         {/* ES6 Feature Equivalent (Speading Values Through*/}
         {this.state.sections.map(({ id, ...otherSectionProps }) => (
-          <MenuItem
-            key={id} {...otherSectionProps} />
+          <MenuItem key={id} {...otherSectionProps} />
         ))}
       </div>
     )

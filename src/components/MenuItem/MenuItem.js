@@ -1,7 +1,7 @@
 import React from 'react'
 import { withRouter } from 'react-router-dom' // A higher order function that takes a function that renders out a a modified component
 
-import '../scss/MenuItem.styles.scss'
+import './MenuItem.styles.scss'
 
 const MenuItem = ({ title, imageUrl, size, history, linkUrl, match }) => (
   <div
