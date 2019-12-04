@@ -1,10 +1,11 @@
 import React from 'react'
 import { Switch, Route } from 'react-router-dom'
 
+import '../src/App.css'
+
 import Homepage from './containers/Homepage/Homepage'
 import Shop from './containers/Shop/Shop'
 import HatsPage from './containers/HatsPage/HatsPage'
-
 
 function App() {
   return (
