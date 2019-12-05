@@ -20,14 +20,14 @@ class SignIn extends React.Component {
   handleSubmit = event => {
     event.preventDefault()
 
-    this.setState({ email: '', password: '' })
+    this.setState({ email: '', password: '' }) // Makes property dynamically accessible
   }
 
   // Submission Value Handler
   handleChange = event => {
     const { value, name } = event.target
 
-    this.setState({ [name]: value }) // Makes property dynamic
+    this.setState({ [name]: value }) // Makes property dynamically accessible
   }
 
   render() {
@@ -42,7 +42,7 @@ class SignIn extends React.Component {
             type='email'
             value={this.state.email}
             handleChange={this.handleChange}
-            label='email'
+            label='Email'
             required
           />
           <FormInput
@@ -50,7 +50,7 @@ class SignIn extends React.Component {
             type='password'
             value={this.state.password}
             handleChange={this.handleChange}
-            label='password'
+            label='Password'
             required
           />
           <CustomButton type='submit'>SIGN IN</CustomButton>
