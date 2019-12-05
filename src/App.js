@@ -6,7 +6,7 @@ import '../src/App.css'
 import Homepage from './containers/Homepage/Homepage'
 import Shop from './containers/Shop/Shop'
 import HatsPage from './containers/HatsPage/HatsPage'
-import SignInAndSignUp from './containers/SignInAndSignUp/SignInAndSignUp' 
+import SignInAndSignUp from './containers/SignInAndSignUp/SignInAndSignUp'
 import Header from './components/Header/Header'
 
 function App() {
@@ -16,7 +16,7 @@ function App() {
       <Switch>
         <Route exact path='/' component={Homepage} />
         <Route path='/shop' component={Shop} />
-        <Route path='/signin' component={SignInAndSignUp} /> 
+        <Route path='/sign-in' component={SignInAndSignUp} />
       </Switch>
     </div>
   )
