@@ -8,14 +8,17 @@ import './Header.styles.scss'
 const Header = () => (
   <div className='header'>
     <Link to='/'>
-      <Logo className='logo'/>
+      <Logo className='logo' />
     </Link>
-    <div className="options">
-      <Link className="option" to='/shop'>
+    <div className='options'>
+      <Link className='option' to='/shop'>
         SHOP
       </Link>
-      <Link className="option" to='/shop'>
+      <Link className='option' to='/shop'>
         CONTACT
+      </Link>
+      <Link className='option' to='/sign-in'>
+        SIGN IN
       </Link>
     </div>
   </div>
