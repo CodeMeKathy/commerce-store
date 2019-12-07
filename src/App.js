@@ -9,17 +9,43 @@ import HatsPage from './containers/HatsPage/HatsPage'
 import SignInAndSignUp from './containers/SignInAndSignUp/SignInAndSignUp'
 import Header from './components/Header/Header'
 
-function App() {
-  return (
-    <div>
-      <Header />
-      <Switch>
-        <Route exact path='/' component={Homepage} />
-        <Route path='/shop' component={Shop} />
-        <Route path='/sign-in' component={SignInAndSignUp} />
-      </Switch>
-    </div>
-  )
-}
+import { auth } from './firebase/firebase.utils'
+
+class App extends React.Component {
+  constructor() {
+    super()
+
+    this.state = {
+      currentUser: null
+    }
+  }
+
+  // Firebase Auth Subscription 
+  unsubscribeFromAuth = null
+
+  componentDidMount() {
+    auth.onAuthStateChanged(user => {
+      this.setState({ currenUser: user })
+      console.log(user);
+    })
+  }
+
+  componentWillUnmount() {
+    this.unsubscribeFromAuth()
+  }
+
+  render(){
+    return (
+      <div>
+        <Header />
+        <Switch>
+          <Route exact path='/' component={Homepage} />
+          <Route path='/shop' component={Shop} />
+          <Route path='/sign-in' component={SignInAndSignUp} />
+        </Switch>
+      </div>
+      )
+    }
+  }
 
 export default App
