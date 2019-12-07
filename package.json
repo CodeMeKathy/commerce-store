@@ -2,7 +2,7 @@
   "name": "commerce",
   "homepage": "https://CodeMeKathy.github.io/commerce-store",
   "version": "0.1.0",
-  "private": true,
+  "private": false,
   "dependencies": {
     "firebase": "^7.5.2",
     "node-sass": "^4.13.0",
