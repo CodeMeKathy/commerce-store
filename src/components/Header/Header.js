@@ -9,7 +9,7 @@ import './Header.styles.scss'
 
 const Header = ({ currentUser }) => (
   <div className='header'>
-    <Link to='/'>
+    <Link className='logo-container' to='/'>
       <Logo className='logo' />
     </Link>
     <div className='options'>
@@ -19,7 +19,6 @@ const Header = ({ currentUser }) => (
       <Link className='option' to='/shop'>
         CONTACT
       </Link>
-
       {currentUser ? (
         <div className='option' onClick={() => auth.signOut()}>
           SIGN OUT
