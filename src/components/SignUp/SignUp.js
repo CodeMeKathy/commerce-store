@@ -28,7 +28,7 @@ class SignUp extends React.Component {
       alert('Your passwords do not match!')
       return
     }
-    // TODO: Add alert for weak passweork
+    // TODO: Add alert for weak password
 
     try {
       const { user } = await auth.createUserWithEmailAndPassword(
