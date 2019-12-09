@@ -30,6 +30,7 @@ class App extends React.Component {
         const userRef = await createUserProfileDocument(userAuth)
 
         userRef.onSnapshot(snapshot => {
+          // Newly created object that has access to all the properties of the current user SnapShot as well as the ID.
           this.setState({
             currentUser: {
               id: snapshot.id,
