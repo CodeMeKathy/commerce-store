@@ -5,7 +5,7 @@ import './SignIn.styles.scss'
 import FormInput from '../FormInput/FormInput'
 import CustomButton from '../CustomButton/CustomButton'
 
-import { signInWithGoogle } from '../../firebase/firebase.utils.js'
+import { auth, signInWithGoogle } from '../../firebase/firebase.utils.js'
 
 class SignIn extends React.Component {
   constructor(props) {
@@ -20,10 +20,18 @@ class SignIn extends React.Component {
   // Custom Methods
 
   // Form Submit Prevents Reload
-  handleSubmit = event => {
+  handleSubmit = async event => {
     event.preventDefault()
 
-    this.setState({ email: '', password: '' }) // Makes property dynamically accessible
+    const { email, password } = this.state
+
+    try {
+      await auth.signInWithEmailAndPassword(email, password)
+
+      this.setState({email: '', password: ''}) // Makes property dynamically accessible
+    } catch (error) {
+      console.log(error);
+    }
   }
 
   // Submission Value Handler
