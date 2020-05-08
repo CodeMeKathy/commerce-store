@@ -5,14 +5,14 @@ import 'firebase/firestore'
 import 'firebase/auth'
 
 const config = {
-  apiKey: 'AIzaSyBUZb4Zl6bSMW_euWjL3g-Ofk1TjBPusMg',
-  authDomain: 'codemekathystore.firebaseapp.com',
-  databaseURL: 'https://codemekathystore.firebaseio.com',
-  projectId: 'codemekathystore',
-  storageBucket: 'codemekathystore.appspot.com',
-  messagingSenderId: '102549482425',
-  appId: '1:102549482425:web:0f6e6d5dff2e6f3861e468',
-  measurementId: 'G-JWFRVXWJ5B'
+  apiKey: 'AIzaSyBRT0YpA87q1eC0eYRTtERmgr_vJdDMJTE',
+  authDomain: 'cmk-store.firebaseapp.com',
+  databaseURL: 'https://cmk-store.firebaseio.com',
+  projectId: 'cmk-store',
+  storageBucket: 'cmk-store.appspot.com',
+  messagingSenderId: '565993191023',
+  appId: '1:565993191023:web:802a0514a012398942ff9a',
+  measurementId: 'G-Z4E430N66J'
 }
 
 firebase.initializeApp(config)
@@ -43,8 +43,6 @@ export const createUserProfileDocument = async (userAuth, additionalData) => {
   console.log(snapShot)
   return userRef
 }
-
-
 
 export const auth = firebase.auth()
 export const firestore = firebase.firestore()

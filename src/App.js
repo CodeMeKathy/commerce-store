@@ -1,5 +1,6 @@
 import React from 'react'
 import { Switch, Route } from 'react-router-dom'
+import { connect } from 'react-redux'
 
 import '../src/App.css'
 
@@ -10,37 +11,42 @@ import SignInAndSignUp from './containers/SignInAndSignUp/SignInAndSignUp'
 import Header from './components/Header/Header'
 
 import { auth, createUserProfileDocument } from './firebase/firebase.utils'
+import { setCurrentUser } from './redux/user/user.actions'
 
 class App extends React.Component {
-  constructor() {
-    super()
+  //* This constructor is no longer needed once Redux is added to the application and managing state
+  // constructor() {
+  //   super()
 
-    this.state = {
-      currentUser: null
-    }
-  }
+  //   this.state = {
+  //     currentUser: null
+  //   }
+  // }
 
-  // Firebase Auth Subscription 
+  // Firebase Auth Subscription
   unsubscribeFromAuth = null
 
   componentDidMount() {
+    const { setCurrentUser } = this.props
 
-    this.unsubscribeFromAuth = auth.onAuthStateChanged( async userAuth => {
+    this.unsubscribeFromAuth = auth.onAuthStateChanged(async userAuth => {
       if (userAuth) {
         const userRef = await createUserProfileDocument(userAuth)
 
         userRef.onSnapshot(snapshot => {
-          // Newly created object that has access to all the properties of the current user SnapShot as well as the ID.
-          this.setState({
-            currentUser: {
-              id: snapshot.id,
-              ...snapshot.data()
-            }
+          //* This is no longer needed once Redux is added to the application and managing state
+          // // Newly created object that has access to all the properties of the current user SnapShot as well as the ID.
+          // this.setState({
+          //   currentUser: {
+
+          setCurrentUser({
+            id: snapshot.id,
+            ...snapshot.data()
           })
-          console.log(this.state);
+          console.log(this.state)
         })
       }
-      this.setState({ currentUser: userAuth})
+      setCurrentUser(userAuth)
     })
   }
 
@@ -48,18 +54,23 @@ class App extends React.Component {
     this.unsubscribeFromAuth()
   }
 
-  render(){
+  render() {
     return (
       <div>
-        <Header currentUser={this.state.currentUser}/>
+        <Header />
         <Switch>
           <Route exact path='/' component={Homepage} />
           <Route path='/shop' component={Shop} />
           <Route path='/signin' component={SignInAndSignUp} />
         </Switch>
       </div>
-      )
-    }
+    )
   }
+}
 
-export default App
+const mapDispatchToProps = dispatch => ({
+  setCurrentUser: user => dispatch(setCurrentUser(user))
+})
+
+// Update to receive the current user value from the reducer. In the connect() pass thru null   bc we do not need any state to props from our reducer
+export default connect(null, mapDispatchToProps)(App)
