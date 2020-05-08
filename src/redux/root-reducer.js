@@ -1,4 +1,5 @@
-// Container for all Reducers
+//! Container for all Reducers
+
 import { combineReducers } from 'redux'
 
 import userReducer from './user/user.reducer.js'
