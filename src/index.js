@@ -10,6 +10,7 @@ import App from './App'
 import store from './redux/store'
 
 ReactDOM.render(
+  // The provider is the parent component of the entire application and has access to everythign in the store component. 
   <Provider store={store} >
     <BrowserRouter>
         <App />
