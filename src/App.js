@@ -5,7 +5,7 @@ import { connect } from 'react-redux'
 import '../src/App.css'
 
 import Homepage from './containers/Homepage/Homepage'
-import Shop from './containers/Shop/Shop'
+import ShopPage from './containers/ShopPage/ShopPage'
 import HatsPage from './containers/HatsPage/HatsPage'
 import SignInAndSignUp from './containers/SignInAndSignUp/SignInAndSignUp'
 import Header from './components/Header/Header'
@@ -33,15 +33,15 @@ class App extends React.Component {
       if (userAuth) {
         const userRef = await createUserProfileDocument(userAuth)
 
-        userRef.onSnapshot(snapshot => {
-          //* This is no longer needed once Redux is added to the application and managing state
+        userRef.onSnapshot(snapShot => {
+          //* This is no longer needed once Redux is added to the application and managing state. Replaced with lines 42-45 with setCurrentUser object
           // // Newly created object that has access to all the properties of the current user SnapShot as well as the ID.
           // this.setState({
           //   currentUser: {
 
           setCurrentUser({
-            id: snapshot.id,
-            ...snapshot.data()
+            id: snapShot.id,
+            ...snapShot.data()
           })
           console.log(this.state)
         })
@@ -60,7 +60,7 @@ class App extends React.Component {
         <Header />
         <Switch>
           <Route exact path='/' component={Homepage} />
-          <Route path='/shop' component={Shop} />
+          <Route path='/shop' component={ShopPage} />
           <Route path='/signin' component={SignInAndSignUp} />
         </Switch>
       </div>
