@@ -1,5 +1,21 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+
+## Firebase Database Config
+
+```
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    match /{document=**} {
+       allow read: if true;
+       allow write: if false;
+    }
+  }
+}
+```
+
+
 ## Available Scripts
 
 In the project directory, you can run:
