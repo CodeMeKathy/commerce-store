@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
 
 import { auth } from '../../firebase/firebase.utils'
+import CartIcon from '../CartIcon/CartIcon'
 
 import { ReactComponent as Logo } from '../../assets/crown.svg'
 
@@ -29,13 +30,14 @@ const Header = ({ currentUser }) => (
           SIGN IN
         </Link>
       )}
+      <CartIcon />
     </div>
   </div>
 )
 
 const mapStateToProps = state => ({
   // mapStateToProps is standard naming convention within the redux codebases
-  // name of the proptery is the actual name passed in and the value will be the value... this is the state object
+  // name of the property is the actual name passed in and the value will be the value... this is the state object
   currentUser: state.user.currentUser
 })
 // Note: connect() is a higher order function that passes through two functions.
