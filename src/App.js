@@ -1,5 +1,5 @@
 import React from 'react'
-import { Switch, Route } from 'react-router-dom'
+import { Switch, Route, Redirect } from 'react-router-dom'
 import { connect } from 'react-redux'
 
 import '../src/App.css'
@@ -45,15 +45,27 @@ class App extends React.Component {
         <Switch>
           <Route exact path='/' component={Homepage} />
           <Route path='/shop' component={ShopPage} />
-          <Route path='/signin' component={SignInAndSignUp} />
+          {/* The render React component allows for the use of redirecting the routed page based on the currentUser status, while also securing access to the sign-in page based on the same */}
+          <Route
+            exact
+            path='/signin'
+            render={() =>
+              this.props.currentUser ? <Redirect to='/' /> : <SignInAndSignUp />
+            }
+          />
         </Switch>
       </div>
     )
   }
 }
 
+const mapStateToProps = ({ user }) => ({
+  // Destructuring the variable `user` reducer off and return currentUser prop
+  currentUser: user.currentUser
+})
+
 const mapDispatchToProps = dispatch => ({
   setCurrentUser: user => dispatch(setCurrentUser(user))
 })
 
-export default connect(null, mapDispatchToProps)(App)
+export default connect(mapStateToProps, mapDispatchToProps)(App)
