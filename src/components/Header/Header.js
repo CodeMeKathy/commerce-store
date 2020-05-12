@@ -10,7 +10,7 @@ import { ReactComponent as Logo } from '../../assets/crown.svg'
 
 import './Header.styles.scss'
 
-const Header = ({ currentUser }) => (
+const Header = ({ currentUser, hidden }) => (
   <div className='header'>
     <Link className='logo-container' to='/'>
       <Logo className='logo' />
@@ -33,14 +33,20 @@ const Header = ({ currentUser }) => (
       )}
       <CartIcon />
     </div>
-    <CartDropdown />
+    {hidden ? null : <CartDropdown />}
   </div>
 )
 
-const mapStateToProps = state => ({
-  // mapStateToProps is standard naming convention within the redux codebases
-  // name of the property is the actual name passed in and the value will be the value... this is the state object
-  currentUser: state.user.currentUser
+// To access the cart and user states nested destructuring can be utilized
+
+const mapStateToProps = ({ user: { currentUser }, cart: { hidden } }) => ({
+  currentUser,
+  hidden
 })
+// const mapStateToProps = state => ({
+//   // mapStateToProps is standard naming convention within the redux codebases
+//   // name of the property is the actual name passed in and the value will be the value... this is the state object
+//   currentUser: state.user.currentUser
+// })
 // Note: connect() is a higher order function that passes through two functions.
 export default connect(mapStateToProps)(Header)
